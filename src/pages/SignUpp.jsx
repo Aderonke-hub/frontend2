@@ -20,29 +20,31 @@ const SignUpp = () => {
     localStorage.setItem("products", JSON.stringify(allUsers));
   }, [allUsers]);
   const submitUser = () => {
-    const userData = {
-      productName,
-      productPrice,
-      productDescription,
-      productCategory,
-      productImage,
-    };
 
-    if (isEditing) {
-      const updatedUsers = [...allUsers];
-      updatedUsers[editIndex] = userData;
-      setAllUsers(updatedUsers);
-      setIsEditing(false);
-      setEditIndex(null);
-    } else {
-      const newAllUsers = [...allUsers, userData];
-      setAllUsers(newAllUsers);
-    }
-    setProductName("");
-    setProductPrice("");
-    setProductDescription("");
-    setProductCategory("");
-    setProductImage("");
+
+    // const userData = {
+    //   productName,
+    //   productPrice,
+    //   productDescription,
+    //   productCategory,
+    //   productImage,
+    // };
+
+    // if (isEditing) {
+    //   const updatedUsers = [...allUsers];
+    //   updatedUsers[editIndex] = userData;
+    //   setAllUsers(updatedUsers);
+    //   setIsEditing(false);
+    //   setEditIndex(null);
+    // } else {
+    //   const newAllUsers = [...allUsers, userData];
+    //   setAllUsers(newAllUsers);
+    // }
+    // setProductName("");
+    // setProductPrice("");
+    // setProductDescription("");
+    // setProductCategory("");
+    // setProductImage("");
   };
   const deleteProduct = (index) => {
     const updatedUsers = allUsers.filter((_, i) => i !== index);
@@ -71,17 +73,18 @@ const SignUpp = () => {
               </h1>
             </div>
             <div className="card-body">
-              <form>
+              <form onSubmit={submitUser}>
                 <div className="mb-3">
                   <input
                     type="text"
                     className="form-control"
                     placeholder="Enter Your product name"
+                    name="firstName"
                     value={productName}
                     onChange={(e) => setProductName(e.target.value)}
                   />
                 </div>
-                <div className="mb-3">
+                {/* <div className="mb-3">
                   <input
                     type="number"
                     className="form-control"
@@ -89,11 +92,12 @@ const SignUpp = () => {
                     value={productPrice}
                     onChange={(e) => setProductPrice(e.target.value)}
                   />
-                </div>
+                </div> */}
                 <div className="mb-3">
                   <input
                     type="text"
                     className="form-control"
+                    name="lastName"
                     placeholder="Enter your product description"
                     value={productDescription}
                     onChange={(e) => setProductDescription(e.target.value)}
@@ -103,6 +107,7 @@ const SignUpp = () => {
                   <input
                     type="text"
                     className="form-control"
+                    name="email"
                     placeholder="Enter your product category"
                     value={productCategory}
                     onChange={(e) => setProductCategory(e.target.value)}
@@ -112,6 +117,7 @@ const SignUpp = () => {
                   <input
                     type="text"
                     className="form-control"
+                    name="password"
                     placeholder="Enter Your product image"
                     value={productImage}
                     onChange={(e) => setProductImage(e.target.value)}
@@ -119,9 +125,9 @@ const SignUpp = () => {
                 </div>
                 <div className="d-grid">
                   <button
-                    type="button"
+                    type="submit"
                     className="btn btn-primary btn-lg"
-                    onClick={submitUser}
+                  
                   >
                     {isEditing ? "Save Changes" : "Sign Upp"}
                   </button>
