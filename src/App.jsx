@@ -1,5 +1,5 @@
 import React from 'react'
-import Signup  from './pages/signup'
+import Signup from './pages/Signup1'
 import Signin from './pages/signin'
 import SignUpp from './pages/SignUpp'
 import Dashboard from './pages/Dashboard'
@@ -16,7 +16,7 @@ const App = () => {
     <div>
       <Navbar/>
       <Routes>
-        <Route path ='/' element={<Signup />}/>
+        <Route path ='/' element={<Signup1 />}/>
         <Route path='/signin' element={<Signin />} />
         <Route path='/signupp' element={<SignUpp />} />
         <Route path='/dashboard' element={<Dashboard />} />
